@@ -33,13 +33,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
+        // Crear callback manager para controlar la respuesta del inicio de sesion
         callbackManager = CallbackManager.Factory.create();
+
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
         // If using in a fragment
         // loginButton.setFragment(this);
+
 
         // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -69,6 +71,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-        Toast.makeText(MainActivity.this,"Ah mira, si llega al result", Toast.LENGTH_LONG).show();
     }
 }
